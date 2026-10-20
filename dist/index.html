@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Alicja Wróblewska | Portfolio Graficzne</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Alicja Wróblewska | Portfolio Graficzne">
+  <meta property="og:description" content="Portfolio projektantki graficznej – Fotomontaż, Ilustracja, Branding, Plakaty i Video.">
+  <script type="module" crossorigin src="/portfolio/assets/index-CFsxLZnV.js"></script>
+  <link rel="stylesheet" crossorigin href="/portfolio/assets/index-up89GI68.css">
+</head>
+<body>
+<!-- Ekran powitalny (Preloader w stylu DTP / Figma UI) -->
+  <div id="preloader">
+    <!-- Pasek postępu na samej górze -->
+    <div class="preloader-bar" id="preloader-bar"></div>
+
+    <!-- Narożniki kreślarskie (Crop Marks) -->
+    <div class="crop-mark top-left"></div>
+    <div class="crop-mark top-right"></div>
+    <div class="crop-mark bottom-left"></div>
+    <div class="crop-mark bottom-right"></div>
+
+    <!-- Główna zawartość -->
+    <div class="preloader-content">
+      <div class="preloader-status">
+        <span class="status-dot"></span>
+        <code>[SYS_INIT] LOADING WORKSPACE</code>
+      </div>
+      <span class="preloader-brand">Alicja Wróblewska</span>
+      <span class="preloader-sub">Portfolio // Gdańsk 2026</span>
+    </div>
+  </div>
+  <!-- Zamiast starej div.bg-decor wstawiamy dedykowany canvas -->
+<canvas id="bg-canvas"></canvas>
+
+  <header>
+    <div class="brand">
+      Alicja<br>Wróblewska
+      <small>PORTFOLIO GRAFICZNE</small>
+    </div>
+    <button class="btn-pill" id="bo">O mnie</button>
+  </header>
+
+  <div id="st">
+    <div id="ring"></div>
+  </div>
+
+  <div class="bar">
+    <div class="row">
+      <button class="ar" id="pv" aria-label="Poprzednia kategoria">‹</button>
+      <div>
+        <div id="lab"></div>
+        <span id="cnt"></span>
+      </div>
+      <button class="ar" id="nx" aria-label="Następna kategoria">›</button>
+    </div>
+    <button class="go" id="gb">Przeglądaj kategorię</button>
+    <div class="hint">przeciągnij / kółko myszy / strzałki</div>
+  </div>
+
+  <div id="cat">
+    <button class="btn-pill back-btn" id="bk">← Powrót do menu</button>
+    <h1 id="ct"></h1>
+    <div id="gr"></div>
+  </div>
+
+  <div id="lb">
+    <button class="lb-close" id="lbc">Zamknij ✕</button>
+    <div class="lb-content" id="lbcnt"></div>
+    <div class="lb-caption">
+      <h3 id="lbt"></h3>
+      <p id="lbd">Kliknij poza obrazem, aby zamknąć podgląd</p>
+    </div>
+  </div>
+
+  <aside id="ab">
+    <h2>Alicja Wróblewska</h2>
+    <p class="bio">
+      Projektantka graficzna i twórczyni identyfikacji wizualnych z Gdańska. Łączę wykształcenie z zakresu multimediów i technologii z wyczuciem estetycznym, tworząc projekty przemyślane pod kątem potrzeb klienta.
+    </p>
+
+
+    <h4>Narzędzia & Specjalizacja</h4>
+    <div class="skills-tags">
+      <span class="tag">Adobe Illustrator</span>
+      <span class="tag">Adobe Photoshop</span>
+      <span class="tag">Adobe InDesign</span>
+      <span class="tag">Figma (UI/UX)</span>
+      <span class="tag">Branding & Logo</span>
+      <span class="tag">Druk & DTP</span>
+      <span class="tag">Montaż Video / Rolki</span>
+    </div>
+
+    <h4>Kontakt</h4>
+    <p class="bio" style="margin-top: 12px;">
+      📧 <span id="copy-email" title="Kliknij, aby skopiować" style="cursor: pointer; color: var(--ac); font-weight: 600;">alicja.wroblewska1229@gmail.com</span><br>
+      📍 Gdańsk, Trójmiasto
+    </p>
+  </aside>
+
+  <button class="btn-pill x-btn" id="cx">Zamknij ✕</button>
+
+</body>
+<div id="toast">Skopiowano e-mail do schowka! 📋</div>
+</html>

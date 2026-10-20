@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alicja Wróblewska, grafik komputerowy</title>
+<style>
+:root{--b1:#e9e5da;--dot:#cdc7b4;--fg:#1d2a30;--mut:#5b6a70;--ac:#2a9db3;--pn:#f6f3ebf2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--b1:#22262c;--dot:#363b44;--fg:#eef4f6;--mut:#94a6ad;--ac:#46c2d8;--pn:#1a1e24f2}}
+:root[data-theme="dark"]{--b1:#22262c;--dot:#363b44;--fg:#eef4f6;--mut:#94a6ad;--ac:#46c2d8;--pn:#1a1e24f2}
+*{box-sizing:border-box}html,body{height:100%;margin:0;overflow:hidden}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body,#cat{background:radial-gradient(var(--dot) 1.3px,transparent 1.4px) 0 0/24px 24px,var(--b1)}
+body{color:var(--fg);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;position:relative}
+button{font:inherit;color:inherit;cursor:pointer}
+#gh{position:absolute;left:3vw;bottom:8vh;font:900 clamp(60px,16vw,200px)/.8 Georgia,serif;color:var(--fg);opacity:.06;pointer-events:none;letter-spacing:-.03em}
+header{position:absolute;top:0;left:0;right:0;padding:18px 22px;display:flex;justify-content:space-between;align-items:flex-start;z-index:900;pointer-events:none}
+header>*{pointer-events:auto}
+.nm{font:700 20px/1.1 Georgia,serif;letter-spacing:.04em;text-transform:uppercase}.nm small{display:block;font:12px system-ui;letter-spacing:.18em;color:var(--ac);margin-top:4px}
+.pill{border:1px solid var(--ac);background:transparent;padding:8px 18px;border-radius:99px;transition:.25s}.pill:hover{background:var(--ac);color:#fff}
+.bar{position:absolute;left:0;right:0;bottom:calc(20px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;align-items:center;gap:8px;z-index:900;pointer-events:none}
+.bar>*{pointer-events:auto}.hint{font-size:12px;color:var(--mut);text-align:center;padding:0 16px}
+#desk,#cd{position:absolute;inset:0}
+.stk{position:absolute;width:var(--cw);height:calc(var(--cw)*1.25);cursor:grab;touch-action:none;user-select:none}
+.sm .stk{transition:left .7s cubic-bezier(.3,1.4,.5,1),top .7s cubic-bezier(.3,1.4,.5,1)}
+.in{position:relative;width:100%;height:100%;transition:transform .25s;animation:drop .9s cubic-bezier(.2,.9,.3,1.1) backwards}
+@keyframes drop{from{transform:translateY(-110vh) rotate(24deg)}}
+.stk:hover .in{transform:translateY(-8px)}.g .in{transform:scale(1.06)!important}.g{cursor:grabbing}
+.sc{position:absolute;inset:0;border-radius:6px;padding:12px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:0 8px 20px #0004;border:5px solid #fffd}
+.sc b{font:700 22px/1.1 Georgia,serif}.sc small{opacity:.9;font-size:12px}
+.tp,.wk::before{position:absolute;top:-10px;left:50%;width:70px;height:20px;margin-left:-35px;background:#ffe08acc;transform:rotate(-3deg);z-index:2;box-shadow:0 1px 3px #0002}
+.wk{position:absolute;cursor:grab;touch-action:none;user-select:none;transition:transform .25s}
+.wk:hover{transform:rotate(0) scale(1.05)!important}.wk .in{box-shadow:0 12px 30px #0005;border:5px solid #fffd;border-radius:4px;overflow:hidden;background:#fff}
+.wk img,.wk video,.ph{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.ph{display:flex;flex-direction:column;justify-content:flex-end;padding:12px;color:#fff}.ph b{font:700 18px Georgia,serif}.ph small{opacity:.85;font-size:12px}
+#cat{position:fixed;inset:0;z-index:20;transform:scale(.04);opacity:0;visibility:hidden;transition:transform .65s cubic-bezier(.7,0,.2,1),opacity .4s,visibility 0s .65s}
+#cat.open{transform:none;opacity:1;visibility:visible;transition:transform .65s cubic-bezier(.7,0,.2,1),opacity .4s,visibility 0s}
+.back{position:fixed;top:calc(env(safe-area-inset-top,0px) + 16px);left:22px;z-index:950}
+#ct{position:absolute;left:24px;top:calc(env(safe-area-inset-top,0px) + 70px);margin:0;font:700 clamp(36px,8vw,72px)/1 Georgia,serif;pointer-events:none}
+#lb{position:fixed;inset:0;z-index:1000;background:#000c;display:none;align-items:center;justify-content:center}#lb.open{display:flex}
+#bg{max-width:92vw;border:6px solid #fffd;border-radius:6px;overflow:hidden;background:#fff}
+#bg .ph,#bg img,#bg video{pointer-events:auto}
+#ab{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--pn);z-index:1100;transform:translateX(105%);transition:transform .5s cubic-bezier(.7,0,.2,1);overflow:auto;padding:calc(env(safe-area-inset-top,0px) + 64px) 26px 30px;backdrop-filter:blur(12px)}
+#ab.open{transform:none}#ab h2{font:700 28px Georgia,serif;margin:0 0 6px}#ab h4{margin:22px 0 6px;color:var(--ac);letter-spacing:.14em;text-transform:uppercase;font-size:12px}
+#ab p,#ab li{margin:0 0 6px;color:var(--mut)}#ab ul{padding-left:18px;margin:0}#ab b{color:var(--fg)}
+.x{position:fixed;top:calc(env(safe-area-inset-top,0px) + 16px);right:22px;z-index:1101;display:none}#ab.open~.x{display:block}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition-duration:.01s!important}}
+</style>
+</head>
+<body>
+<div id="gh">portfolio</div>
+<header><div class="nm">Alicja<br>Wróblewska<small>GRAFIK KOMPUTEROWY</small></div><button class="pill" id="bo">O mnie</button></header>
+<div id="desk"></div>
+<div class="bar"><button class="pill" id="tid">Uporządkuj biurko</button><div class="hint">przeciągaj karty, kliknij stos, żeby go otworzyć</div></div>
+<div id="cat"><button class="pill back" id="bk">← Wróć na biurko</button><h1 id="ct"></h1><div id="cd"></div></div>
+<div id="lb"><div id="bg"></div></div>
+<aside id="ab"><h2>Alicja Wróblewska</h2><p>Grafik komputerowy z pasją do obsługi klienta i wysokiej jakości usług. Studiowała multimedia i grafikę komputerową, a doświadczenie z pracy z ludźmi przekłada na projekty pod potrzeby klienta.</p>
+<h4>Wykształcenie</h4><ul><li><b>2020–2024</b> Uniwersytet WSB Merito w Gdańsku, Multimedia i Grafika Komputerowa</li><li><b>2025–obecnie</b> Uniwersytet Gdański, Biznes i Technologia Ekologiczna</li></ul>
+<h4>Doświadczenie</h4><ul><li>Biedronka, kasjerka/sprzedawca (2026)</li><li>PZU Zdrowie, rejestratorka medyczna (2025–2026)</li><li>Gdynia Główna Apartments, recepcjonistka (2023–2024)</li><li>Urząd Miasta Wąbrzeźno, praktykantka (2022–2023)</li></ul>
+<h4>Umiejętności</h4><ul><li>Język angielski B2</li><li>Pakiet MS Office</li><li>Prawo jazdy kat. B</li></ul>
+<h4>Kontakt</h4><p>alicja.wroblewska1229@gmail.com<br>Gdańsk</p></aside>
+<button class="pill x" id="cx">Zamknij ✕</button>
+<script>
+const W=[
+{n:'Fotomontaż',a:'4/3',h:'#3fb6c9,#1d4e89',items:[{t:'Fotomontaż'}]},
+{n:'Ilustracje',a:'1/1',h:'#f4a261,#e76f51',items:[{t:'Ilustracja 1'},{t:'Ilustracja 2'}]},
+{n:'Logo',a:'1/1',h:'#8d99ae,#2b2d42',items:[{t:'Logo 1'},{t:'Logo 2'}]},
+{n:'Plakaty',a:'3/4',h:'#ef476f,#6a4c93',items:[{t:'Plakat 1'},{t:'Plakat 2'},{t:'Plakat 3'}]},
+{n:'Rolki',a:'9/16',h:'#06d6a0,#118ab2',video:1,items:[{t:'Rolka'}]}
+];
+const $=s=>document.querySelector(s),desk=$('#desk'),cd=$('#cd'),cat=$('#cat');let zz=10;
+const cnt=w=>{const n=w.items.length;return n===1?(w.video?'1 film':'1 praca'):n+' prace'};
+function tile(it,w){return it.src?(w.video?'<video src="'+it.src+'" muted loop playsinline></video>':'<img src="'+it.src+'" alt="'+it.t+'">'):'<div class="ph" style="background:linear-gradient(155deg,'+w.h+')"><b>'+it.t+'</b><small>'+(w.video?'▶ miejsce na film':'miejsce na pracę')+'</small></div>'}
+function drag(el,click){let sx,sy,ox,oy,mv=0,on=0;
+el.addEventListener('pointerdown',e=>{on=1;mv=0;sx=e.clientX;sy=e.clientY;ox=el.offsetLeft;oy=el.offsetTop;el.setPointerCapture(e.pointerId);el.style.zIndex=++zz;el.classList.add('g')});
+el.addEventListener('pointermove',e=>{if(!on)return;const dx=e.clientX-sx,dy=e.clientY-sy;mv=Math.max(mv,Math.abs(dx)+Math.abs(dy));
+el.style.left=Math.min(innerWidth-40,Math.max(40-el.offsetWidth,ox+dx))+'px';el.style.top=Math.min(innerHeight-40,Math.max(40-el.offsetHeight,oy+dy))+'px'});
+el.addEventListener('pointerup',()=>{if(!on)return;on=0;el.classList.remove('g');if(mv<6)click(el)})}
+const P=[[.2,.3],[.52,.24],[.8,.36],[.3,.68],[.7,.7]];
+const S=W.map((w,i)=>{const s=document.createElement('div'),n=Math.min(3,w.items.length+1);let h='';
+for(let k=0;k<n;k++){const top=k===n-1;h+='<div class="sc" style="background:linear-gradient(155deg,'+w.h+');transform:rotate('+[-9,6,-2][k]+'deg) translate('+k*3+'px,'+-k*3+'px)">'+(top?'<b>'+w.n+'</b><small>'+cnt(w)+'</small>':'')+'</div>'}
+s.className='stk';s.innerHTML='<div class="in" style="animation-delay:'+i*140+'ms">'+h+'<i class="tp"></i></div>';desk.appendChild(s);drag(s,()=>openCat(i,s));return s});
+function place(){const cw=innerWidth<640?120:170,ch=cw*1.25;desk.style.setProperty('--cw',cw+'px');S.forEach((s,i)=>{s.style.left=P[i][0]*innerWidth-cw/2+'px';s.style.top=P[i][1]*innerHeight-ch/2+'px'})}
+place();addEventListener('resize',place);
+$('#tid').onclick=()=>{desk.classList.add('sm');place();setTimeout(()=>desk.classList.remove('sm'),800)};
+const FX=[[.5],[.32,.68],[.22,.5,.78]],FY=[.5,.58,.47],R=[-5,4,-3],WD={'1/1':190,'4/3':230,'3/4':170,'9/16':130};
+function openCat(i,s){const w=W[i],r=s.getBoundingClientRect(),n=w.items.length,m=innerWidth<640?.75:1,[a,b]=w.a.split('/').map(Number);
+cat.style.transformOrigin=(r.left+r.width/2)+'px '+(r.top+r.height/2)+'px';$('#ct').textContent=w.n;cd.innerHTML='';
+w.items.forEach((it,j)=>{const wd=WD[w.a]*m,ht=wd*b/a,c=document.createElement('div');c.className='wk';
+c.style.cssText='width:'+wd+'px;height:'+ht+'px;left:'+(FX[n-1][j]*innerWidth-wd/2)+'px;top:'+(FY[j]*innerHeight-ht/2)+'px;transform:rotate('+R[j]+'deg)';
+c.innerHTML='<div class="in" style="animation-delay:'+(450+j*150)+'ms">'+tile(it,w)+'</div>';cd.appendChild(c);drag(c,()=>lb(w,it))});
+cat.classList.add('open')}
+function lb(w,it){const [a,b]=w.a.split('/').map(Number),e=$('#bg');e.style.aspectRatio=w.a;e.style.height='min(80vh,calc(88vw / '+(a/b)+'))';
+e.innerHTML=(it.src&&w.video)?'<video src="'+it.src+'" controls autoplay loop playsinline style="width:100%;height:100%"></video>':tile(it,w);$('#lb').classList.add('open')}
+$('#lb').onclick=e=>{if(e.target.tagName!=='VIDEO')$('#lb').classList.remove('open')};
+$('#bk').onclick=()=>cat.classList.remove('open');
+$('#bo').onclick=()=>$('#ab').classList.add('open');$('#cx').onclick=()=>$('#ab').classList.remove('open');
+addEventListener('keydown',e=>{if(e.key!=='Escape')return;if($('#lb.open'))$('#lb').classList.remove('open');else if($('#ab.open'))$('#ab').classList.remove('open');else cat.classList.remove('open')});
+</script>
+</body>
+</html>
